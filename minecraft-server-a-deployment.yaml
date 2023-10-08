@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server-a-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: minecraft-server-a
+  template:
+    metadata:
+      labels:
+        app: minecraft-server-a
+    spec:
+      containers:
+        - name: minecraft-server-a
+          image: itzg/minecraft-server:latest
+          ports:
+            - containerPort: 25565
+          resources:
+            requests:
+              memory: "512Mi"  # Adjusted memory request for a node with 2GB RAM
+              cpu: "0.25"      # Adjusted CPU request for a node with 1 core
+          env:
+            - name: EULA
+              value: "TRUE"    # Accept the Minecraft EULA
