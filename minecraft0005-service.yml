@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft0005-service
+spec:
+  type: NodePort
+  ports:
+    - port: 25565
+      nodePort: 30005
+      protocol: TCP
+  selector:
+    app: minecraft0005
