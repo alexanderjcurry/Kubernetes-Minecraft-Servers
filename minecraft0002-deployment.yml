@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft0002
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft0002
+  template:
+    metadata:
+      labels:
+        app: minecraft0002
+    spec:
+      containers:
+      - name: minecraft
+        image: itzg/minecraft-server
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1"
+          limits:
+            memory: "3Gi"
+            cpu: "2"
+        env:
+        - name: EULA
+          value: "TRUE"
